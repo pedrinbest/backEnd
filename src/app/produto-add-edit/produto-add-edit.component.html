@@ -1,0 +1,45 @@
+<!--
+Pedro Lucas
+Douglas Marinho 
+-->
+<div mat-dialog-title>
+    <h1>Adicionar Produto</h1>
+</div>
+<form [formGroup]="produtoForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Produto</mat-label>
+                <input matInput type="text" placeholder="Ex. Varetaa de Oléo" formControlName="produto">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Descrição</mat-label>
+                <input matInput placeholder="Ex. Medição de Oléo" formControlName="descricao">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Preço</mat-label>
+                <input matInput type="text" placeholder="Ex. R$ 15,00" formControlName="preco">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Quantidade</mat-label>
+                <input type="number" matInput placeholder="Ex. 10" formControlName="quantidade">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status">
+                    <mat-option *ngFor="let val of status" [value]="val">{{val}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button  mat-raised-button type="button" [mat-dialog-close]="false">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Atualizar': 'Salvar'}}</button>
+    </div>
+</form>
